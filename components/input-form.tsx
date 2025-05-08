@@ -16,11 +16,11 @@ interface InputFormProps {
 }
 
 export default function InputForm({ onSubmit }: InputFormProps) {
-  const [tissueType, setTissueType] = useState("Atlas")
+  const [tissueType, setTissueType] = useState("Esophagus Muscularis")
   const [markerGene, setMarkerGene] = useState(
-    "RP24-338A5.4, Cr2, Ms4a1, Ighd, Fcer2a, Cd79a, Fcmr, Cd22, Cd19, Tnfrsf13c, Blk, Iglc2, Iglc3, Fcrl1, Spib, Pax5, Cd79b",
+    "ANO1, CPA6, RGS7BP, DPP10, KIT, ADAMTS19, ETV1, EDN3, OBSCN, DLGAP1, GUCY1A3, PRKCQ, SLC4A4, CNTNAP4, FAT3, GDNF, PROM1, NPFFR2, COL19A1, RP11-58C22.1, SLC22A24, SLC22A10, IL1RAPL2, CRISPLD1, GPR20, KIAA1024L, WWC1, CCKAR, PPM1E, ELAVL2, FAM110C, FBN2, LRRC3B, KCNIP4, CTNND2, FRMPD4, REM1, DGKB, IQCA1, SGPP2, ATP2A3, PHACTR3, ADGRB3, RIMS1, CPED1, FAP, IQGAP2, GUCY1B3, HMCN1, CACNA1D",
   )
-  const [species, setSpecies] = useState("Mouse")
+  const [species, setSpecies] = useState("Human")
 
   // Toggle between dropdown and manual input
   const [useCustomTissue, setUseCustomTissue] = useState(false)
@@ -66,6 +66,7 @@ export default function InputForm({ onSubmit }: InputFormProps) {
                   <SelectValue placeholder="Select tissue type" />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="Esophagus Muscularis">Esophagus Muscularis</SelectItem>
                   <SelectItem value="Atlas">Atlas</SelectItem>
                   <SelectItem value="brain">Brain</SelectItem>
                   <SelectItem value="liver">Liver</SelectItem>

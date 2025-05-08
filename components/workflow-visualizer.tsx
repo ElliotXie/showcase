@@ -39,33 +39,33 @@ export default function WorkflowVisualizer({ currentStep, isProcessing }: Workfl
     },
     {
       id: 1,
-      name: "Annotation Robot",
+      name: "Annotator",
       icon: <Brain className="h-8 w-8" />,
-      description: "Generating step-by-step annotation based on markers",
+      description: "Generates detailed cell type annotation using key markers.",
     },
     {
       id: 2,
-      name: "Validation Robot",
+      name: "Validator",
       icon: <CheckSquare className="h-8 w-8" />,
-      description: "Checking annotation accuracy against reference databases",
+      description: "Validates annotation accuracy against curated scientific databases.",
     },
     {
       id: 3,
-      name: "Scoring Robot",
+      name: "Scorer",
       icon: <BarChart4 className="h-8 w-8" />,
-      description: "Evaluating annotation quality and confidence",
+      description: "Scores annotation quality and provides confidence levels.",
     },
     {
       id: 4,
-      name: "Report Robot",
+      name: "Reporter",
       icon: <FileText className="h-8 w-8" />,
-      description: "Compiling comprehensive analysis report",
+      description: "Compiles a comprehensive report with all findings.",
     },
     {
       id: 5,
       name: "Completed",
       icon: <CheckCircle className="h-8 w-8" />,
-      description: "Analysis workflow completed",
+      description: "Full analysis workflow and report generation completed.",
     },
   ]
 
@@ -75,16 +75,16 @@ export default function WorkflowVisualizer({ currentStep, isProcessing }: Workfl
 
       <div className="relative">
         {/* Workflow steps */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-8">
           {steps.map((step, index) => (
-            <div key={step.id} className="flex flex-col items-center text-center mb-4 md:mb-0">
+            <div key={step.id} className="flex flex-col items-center justify-center text-center mb-4 md:mb-0 md:w-1/6">
               <motion.div
                 initial={{ scale: 0.8, opacity: 0.5 }}
                 animate={{
                   scale: currentStep >= step.id ? 1 : 0.8,
                   opacity: currentStep >= step.id ? 1 : 0.5,
                 }}
-                className={`rounded-full p-3 mb-2 ${
+                className={`rounded-full p-3 mb-3 flex items-center justify-center h-16 w-16 ${
                   currentStep > step.id
                     ? "bg-green-100 text-green-600"
                     : currentStep === step.id
@@ -100,16 +100,16 @@ export default function WorkflowVisualizer({ currentStep, isProcessing }: Workfl
                   step.icon
                 )}
               </motion.div>
-              <span className={`text-sm font-medium ${currentStep >= step.id ? "text-indigo-700" : "text-gray-500"}`}>
+              <span className={`text-sm font-medium h-6 flex items-center justify-center ${currentStep >= step.id ? "text-indigo-700" : "text-gray-500"}`}>
                 {step.name}
               </span>
-              <span className="text-xs text-gray-500 max-w-[120px] mt-1 hidden md:block">{step.description}</span>
+              <span className="text-xs text-gray-500 max-w-[120px] mt-1 hidden md:block h-12 overflow-hidden">{step.description}</span>
             </div>
           ))}
         </div>
 
-        {/* Connecting lines */}
-        <div className="hidden md:block absolute top-11 left-0 right-0 h-0.5 bg-gray-200 z-0">
+        {/* Connecting lines - adjust to match the new icon positions */}
+        <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-gray-200 z-0">
           <motion.div
             initial={{ width: "0%" }}
             animate={{

@@ -15,19 +15,19 @@ export default function RobotAnimation({ currentStep, isProcessing }: RobotAnima
 
   useEffect(() => {
     if (currentStep === 1 && isProcessing) {
-      setConversation(["Analyzing marker genes...", "Identifying cell type patterns..."])
+      setConversation(["Analyzing highly expressed genes...", "Identifying key markers: ANO1, KIT, ETV1..."])
       setShowConversation(true)
     } else if (currentStep === 2 && isProcessing) {
-      setConversation(["Validating annotation against reference databases...", "Checking marker consistency..."])
+      setConversation(["Cross-referencing with scRNA-seq databases...", "Validation: PASSED. ICC signature confirmed."])
       setShowConversation(true)
     } else if (currentStep === 3 && isProcessing) {
-      setConversation(["Calculating confidence score...", "Evaluating annotation quality..."])
+      setConversation(["Evaluating annotation quality: Score 95/100.", "Highlighting strengths: Accurate ICC identification, comprehensive marker analysis."])
       setShowConversation(true)
     } else if (currentStep === 4 && isProcessing) {
-      setConversation(["Generating comprehensive report...", "Finalizing analysis..."])
+      setConversation(["Finalizing cell type: Interstitial Cells of Cajal (ICCs).", "Probable subtype: ICC-MY (Myenteric Plexus).", "Generating detailed analysis summary..."])
       setShowConversation(true)
     } else if (currentStep === 5) {
-      setConversation(["Analysis complete!", "Report ready for review."])
+      setConversation(["Full CASSIA Analysis Report generated.", "Ready for review."])
       setShowConversation(true)
       // Auto-hide the conversation after 3 seconds when complete
       const timer = setTimeout(() => {
@@ -42,28 +42,28 @@ export default function RobotAnimation({ currentStep, isProcessing }: RobotAnima
   const robots = [
     {
       id: 1,
-      name: "Annotator",
+      name: "Annotator Agent",
       icon: <Brain className="h-6 w-6" />,
       color: "bg-indigo-100 text-indigo-600",
       activeSteps: [1],
     },
     {
       id: 2,
-      name: "Validator",
+      name: "Validator Agent",
       icon: <CheckCircle className="h-6 w-6" />,
       color: "bg-green-100 text-green-600",
       activeSteps: [2],
     },
     {
       id: 3,
-      name: "Scorer",
+      name: "Scoring Agent",
       icon: <BarChart3 className="h-6 w-6" />,
       color: "bg-amber-100 text-amber-600",
       activeSteps: [3],
     },
     {
       id: 4,
-      name: "Reporter",
+      name: "Reporting Agent",
       icon: <FileText className="h-6 w-6" />,
       color: "bg-blue-100 text-blue-600",
       activeSteps: [4],
@@ -100,18 +100,19 @@ export default function RobotAnimation({ currentStep, isProcessing }: RobotAnima
             {index === 0 && activeRobots.length > 1 && currentStep !== 5 && (
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1, repeat: isProcessing ? Number.POSITIVE_INFINITY : 0, repeatType: "reverse" }}
-                className="absolute top-8 left-[calc(25%+20px)] right-[calc(75%-20px)] h-0.5 bg-gray-300"
+                animate={{ width: "2rem" }}
+                transition={{ duration: 0.5 }}
+                className="absolute top-8 left-[calc(50%-1rem)] h-0.5 bg-gray-300"
               >
                 <motion.div
                   animate={{
-                    x: [0, 100, 0],
+                    x: currentStep === 2 ? [0, 100, 0] : [0, 100],
                   }}
                   transition={{
-                    duration: 2,
+                    duration: currentStep === 2 ? 2 : 1.5,
                     repeat: isProcessing ? Number.POSITIVE_INFINITY : 0,
                     ease: "linear",
+                    repeatType: currentStep === 2 ? "reverse" : "loop",
                   }}
                   className="absolute top-[-3px] h-2 w-2 rounded-full bg-indigo-500"
                 />
